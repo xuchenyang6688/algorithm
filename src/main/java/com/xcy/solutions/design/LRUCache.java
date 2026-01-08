@@ -1,4 +1,4 @@
-package com.xcy.leetcode;
+package com.xcy.solutions.design;
 
 import java.util.HashMap;
 import java.util.Map;

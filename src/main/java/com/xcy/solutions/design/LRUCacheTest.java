@@ -1,4 +1,4 @@
-package com.xcy.leetcode;
+package com.xcy.solutions.design;
 
 public class LRUCacheTest {
     //Need to add -ea in the VM options when running the program to enable assertions

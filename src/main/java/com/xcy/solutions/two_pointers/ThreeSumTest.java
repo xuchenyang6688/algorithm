@@ -1,4 +1,4 @@
-package com.xcy.leetcode;
+package com.xcy.solutions.two_pointers;
 
 import java.util.List;
 

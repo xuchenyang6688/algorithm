@@ -1,4 +1,4 @@
-package com.xcy.leetcode;
+package com.xcy.solutions.arrays_hashing;
 
 import java.util.Arrays;
 import java.util.HashMap;
