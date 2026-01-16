@@ -3,3 +3,4 @@
 3. Use Arrays.sort(int[] array) or Arrays.sort(int[][] array, Comparator) to sort an array.
 4. Use the dummy nodes when necessary in the linked list issues.
 5. Arrays.fill in the dynamic programing
+6. Use Collections.swap(list, index1, index2) to swap elements at different positions in a collection.
