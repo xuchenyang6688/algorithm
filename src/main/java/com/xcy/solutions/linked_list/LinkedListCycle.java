@@ -26,39 +26,28 @@ public class LinkedListCycle {
         if (head == null || head.next == null) {
             return false;
         }
-        // Considering there is a dummy node before the head node, and the slow, fast pointer started from this dummy
-        // node, one move one node, another one moves two nodes
-        ListNode slow = head;
-        ListNode fast = head.next;
-        while (slow != fast) {
-            // This excludes the case that the next slow is null
-            if (fast == null || fast.next == null) {
-                return false;
-            }
-            slow = slow.next;
-            fast = fast.next.next;
-        }
 
-        return true;
-    }
-
-    public boolean hasCycle2(ListNode head) {
-        if (head == null) {
-            return false;
-        }
         ListNode slow = head;
         ListNode fast = head;
-        do {
-            if (fast.next == null || fast.next.next == null) {
-                return false;
-            }
-            slow = slow.next;
-            fast = fast.next.next;
-        } while (slow != fast);
 
-        return true;
+        // Check both fast and fast.next for null to avoid NullPointerException
+        while (fast != null && fast.next != null) {
+            slow = slow.next;          // Move 1 step
+            fast = fast.next.next;     // Move 2 steps
+
+            if (slow == fast) {
+                return true;           // Cycle detected
+            }
+        }
+
+        return false;                  // Fast reached null, no cycle
     }
 
+    // ==================== LIST NODE DEFINITION ====================
+
+    /**
+     * Definition for singly-linked list node.
+     */
     static class ListNode {
         int val;
         ListNode next;
@@ -68,7 +57,6 @@ public class LinkedListCycle {
         }
     }
 
-    // ==================== Test Utilities =====================
     private static ListNode buildListNodes(int[] nums, int position) {
         if (nums == null || nums.length == 0) {
             return null;

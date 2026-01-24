@@ -23,18 +23,32 @@ import java.util.List;
  *-100 <= Node.val <= 100
  * Both list1 and list2 are sorted in non-decreasing order.
  */
-public class MergeTwoSortedList {
+public class MergeTwoSortedLists {
 
     /**
-     * Time Complexity: O(N)
+     * Merges two sorted linked lists into one sorted list.
+     *
+     * Approach: Iterative merge with dummy node
+     * 1. Create a dummy node to simplify edge cases
+     * 2. Compare current nodes of both lists
+     * 3. Attach the smaller node to the merged list
+     * 4. Advance pointer of the list we took from
+     * 5. Continue until one list is exhausted
+     * 6. Attach remaining nodes from the non-empty list
+     *
+     * Key Insight: Since both lists are sorted, we always take the
+     * smaller current node. This ensures the merged list stays sorted.
+     *
+     * Time Complexity: O(n + m) where n = list1 length, m = list2 length
+     *   - Each node is visited exactly once
+     *
      * Space Complexity: O(1)
-     * @param list1
-     * @param list2
-     * @return
+     *   - Only uses a few pointers, no extra data structures
+     *   - Merges in-place by reusing existing nodes
      */
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-        ListNode dummyNode = new ListNode(0);
-        ListNode current = dummyNode;
+        ListNode dummy = new ListNode(0);
+        ListNode current = dummy;
         while (list1!=null && list2!=null){
             if (list1.val <= list2.val){
                 current.next = list1;
@@ -52,9 +66,14 @@ public class MergeTwoSortedList {
         if (list2!=null){
             current.next = list2;
         }
-        return dummyNode.next;
+        return dummy.next;
     }
-    
+
+    // ==================== LIST NODE DEFINITION ====================
+
+    /**
+     * Definition for singly-linked list node.
+     */
     static class ListNode {
         int val;
         ListNode next;
@@ -62,8 +81,15 @@ public class MergeTwoSortedList {
             this.val = val;
         }
     }
-    
-    // ========================== Test Utilities =========================
+
+    // ==================== TESTING UTILITIES ====================
+
+    /**
+     * Builds a linked list from array of integers.
+     *
+     * @param nums array of values (null or empty returns null)
+     * @return head of constructed linked list
+     */
     private static ListNode buildListNodes(int[] nums){
         if (nums == null || nums.length == 0){
             return null;
@@ -77,6 +103,12 @@ public class MergeTwoSortedList {
         return dummyNode.next;
     }
 
+    /**
+     * Converts linked list to array for easy comparison.
+     *
+     * @param head head of linked list
+     * @return array of values, empty array if head is null
+     */
     private static int[] convertListNodesToArray(ListNode head) {
         List<Integer> resultList = new ArrayList<>();
         while(head!=null){
@@ -90,8 +122,9 @@ public class MergeTwoSortedList {
         return nums;
     }
 
+    // ==================== TEST CASES ====================
     public static void main(String[] args) {
-        MergeTwoSortedList solution = new MergeTwoSortedList();
+        MergeTwoSortedLists solution = new MergeTwoSortedLists();
 
         // same length
         ListNode list1 = buildListNodes(new int[] {1,2,4});
