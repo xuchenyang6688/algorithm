@@ -5,3 +5,7 @@
 5. Arrays.fill in the dynamic programing
 6. Use Collections.swap(list, index1, index2) to swap elements at different positions in a collection.
 7. for(Map.Entry<Integer,Integer> entry: frequencyByNum.entrySet())
+8. When using queue or stack, if the element is null, for queue, using
+```java
+Queue<TreeNode> queue = new LinkedList<>();
+```
